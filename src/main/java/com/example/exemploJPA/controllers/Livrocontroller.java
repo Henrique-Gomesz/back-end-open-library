@@ -1,10 +1,11 @@
-package com.example.exemploJPA.restcontrollers;
+package com.example.exemploJPA.controllers;
 
-import com.example.exemploJPA.db.entity.Livro;
-import com.example.exemploJPA.db.repository.LivroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import com.example.exemploJPA.model.entities.Livro;
+import com.example.exemploJPA.model.repositories.LivroRepository;
 
 import java.util.Optional;
 

@@ -1,15 +1,16 @@
-package com.example.exemploJPA.restcontrollers;
+package com.example.exemploJPA.controllers;
 
-import com.example.exemploJPA.db.entity.Emprestimo;
-import com.example.exemploJPA.db.entity.Livro;
-import com.example.exemploJPA.db.repository.EmprestimoRepository;
-import com.example.exemploJPA.db.repository.LivroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.exemploJPA.model.entities.Emprestimo;
+import com.example.exemploJPA.model.entities.Livro;
+import com.example.exemploJPA.model.repositories.EmprestimoRepository;
+import com.example.exemploJPA.model.repositories.LivroRepository;
 
 import java.util.Optional;
 

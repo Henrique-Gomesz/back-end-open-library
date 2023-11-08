@@ -1,8 +1,9 @@
-package com.example.exemploJPA.db.repository;
+package com.example.exemploJPA.model.repositories;
 
-import com.example.exemploJPA.db.entity.Livro;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+
+import com.example.exemploJPA.model.entities.Livro;
 
 import java.util.List;
 
