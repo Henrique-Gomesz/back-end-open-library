@@ -23,11 +23,11 @@ public class AutorLivro {
     private Long livroId;
 
     @ManyToOne
-    @JoinColumn(name = "Autor_id", referencedColumnName = "id", insertable = false, updatable = false)
+    @JoinColumn(name = "Autor_id", referencedColumnName = "Autor_id", insertable = false, updatable = false)
     private Autor autor;
 
     @ManyToOne
-    @JoinColumn(name = "Livro_id", referencedColumnName = "id", insertable = false, updatable = false)
+    @JoinColumn(name = "Livro_id", referencedColumnName = "Livro_id", insertable = false, updatable = false)
     private Livro livro;
 
     public Long getAutorId() {

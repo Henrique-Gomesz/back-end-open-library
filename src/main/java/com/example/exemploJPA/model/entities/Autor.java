@@ -8,15 +8,15 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "Autores")
+@Table(name = "autores")
 public class Autor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Autor_id")
+    @Column(name = "autor_id")
     private Long autorId;
 
-    @Column(name = "Autor_nome")
+    @Column(name = "autor_nome")
     private String autorNome;
 
     public Long getAutorId() {
