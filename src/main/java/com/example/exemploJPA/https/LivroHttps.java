@@ -19,7 +19,7 @@ public class LivroHttps {
     @PostMapping()
     public ResponseEntity<Object> inserirAutor(@RequestBody AddLivroRequest body) {
 
-        boolean status = livroFacede.inserirLivro(body.toDomain(), body.getAutoresId());
+        boolean status = livroFacede.inserirLivro(body);
         if (status)
             return ResponseEntity.ok("Livro inserido com sucesso");
         else

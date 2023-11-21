@@ -1,22 +1,10 @@
 package com.example.exemploJPA.model.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.IdClass;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Table;
+import java.io.Serializable;
 
-@Entity
-@Table(name = "autoreslivros")
-@IdClass(AutorLivroId.class)
-public class AutorLivro {
+public class AutorLivroId implements Serializable {
 
-    @Id
-    @JoinColumn(name = "autor_id")
     private Long autorId;
-
-    @Id
-    @JoinColumn(name = "livro_id")
     private Long livroId;
 
     public Long getAutorId() {

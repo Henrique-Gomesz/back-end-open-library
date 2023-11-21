@@ -1,6 +1,6 @@
 package com.example.exemploJPA.model.entities;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -23,18 +23,15 @@ public class Livro {
     @Column(name = "Livro_nome")
     private String livroNome;
 
-    @Column(name = "Editora_id")
-    private Long editoraId;
-
     @Column(name = "Lanca_ano")
-    private LocalDate lancaAno;
+    private Date lancaAno;
 
     @ManyToOne
-    @JoinColumn(name = "genero_id", referencedColumnName = "categ_id", insertable = false, updatable = false)
+    @JoinColumn(name = "genero_id", referencedColumnName = "categ_id")
     private Categoria generoId;
 
     @ManyToOne
-    @JoinColumn(name = "Editora_id", referencedColumnName = "Editora_id", insertable = false, updatable = false)
+    @JoinColumn(name = "Editora_id", referencedColumnName = "Editora_id")
     private Editora editora;
 
     public Long getLivroId() {
@@ -53,22 +50,6 @@ public class Livro {
         this.livroNome = livroNome;
     }
 
-    public Long getEditoraId() {
-        return editoraId;
-    }
-
-    public void setEditoraId(Long editoraId) {
-        this.editoraId = editoraId;
-    }
-
-    public LocalDate getLancaAno() {
-        return lancaAno;
-    }
-
-    public void setLancaAno(LocalDate lancaAno) {
-        this.lancaAno = lancaAno;
-    }
-
     public Editora getEditora() {
         return editora;
     }
@@ -83,6 +64,14 @@ public class Livro {
 
     public void setGeneroId(Categoria generoId) {
         this.generoId = generoId;
+    }
+
+    public Date getLancaAno() {
+        return lancaAno;
+    }
+
+    public void setLancaAno(Date lancaAno) {
+        this.lancaAno = lancaAno;
     }
 
 }
