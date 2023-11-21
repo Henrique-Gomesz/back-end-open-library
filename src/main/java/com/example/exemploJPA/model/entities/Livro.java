@@ -1,18 +1,15 @@
 package com.example.exemploJPA.model.entities;
 
+import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-
-import java.time.LocalDate;
 
 @Entity
 @Table(name = "Livros")
@@ -32,9 +29,9 @@ public class Livro {
     @Column(name = "Lanca_ano")
     private LocalDate lancaAno;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "Genero")
-    private EnumCategorias genero;
+    @ManyToOne
+    @JoinColumn(name = "genero_id", referencedColumnName = "categ_id", insertable = false, updatable = false)
+    private Categoria generoId;
 
     @ManyToOne
     @JoinColumn(name = "Editora_id", referencedColumnName = "Editora_id", insertable = false, updatable = false)
@@ -72,14 +69,6 @@ public class Livro {
         this.lancaAno = lancaAno;
     }
 
-    public EnumCategorias getGenero() {
-        return genero;
-    }
-
-    public void setGenero(EnumCategorias genero) {
-        this.genero = genero;
-    }
-
     public Editora getEditora() {
         return editora;
     }
@@ -88,5 +77,12 @@ public class Livro {
         this.editora = editora;
     }
 
-    
+    public Categoria getGeneroId() {
+        return generoId;
+    }
+
+    public void setGeneroId(Categoria generoId) {
+        this.generoId = generoId;
+    }
+
 }
