@@ -5,8 +5,6 @@ import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -15,29 +13,28 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 
 @Entity
-@Table(name = "Exemplar")
+@Table(name = "exemplar")
 public class Exemplar {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Exemp_id")
+    @Column(name = "exemp_id")
     private Long id;
 
-    @Column(name = "Livro_id")
+    @Column(name = "livro_id")
     private Long livroId;
 
-    @Column(name = "Exemp_status")
-    @Enumerated(EnumType.STRING)
-    private StatusExemplares statusExemplar;
+    @Column(name = "exemp_status")
+    private String statusExemplar;
 
-    @Column(name = "Exemp_data")
+    @Column(name = "exemp_data")
     @Temporal(TemporalType.DATE)
     private Date dataExemplar;
 
-    @Column(name = "Exemp_edicao")
+    @Column(name = "exemp_edicao")
     private String edicao;
 
-    @Column(name = "Exemp_anoPubli")
+    @Column(name = "exemp_anopubli")
     private Integer anoPublicacao;
 
     public Long getId() {
@@ -56,11 +53,11 @@ public class Exemplar {
         this.livroId = livroId;
     }
 
-    public StatusExemplares getStatusExemplar() {
+    public String getStatusExemplar() {
         return statusExemplar;
     }
 
-    public void setStatusExemplar(StatusExemplares statusExemplar) {
+    public void setStatusExemplar(String statusExemplar) {
         this.statusExemplar = statusExemplar;
     }
 
