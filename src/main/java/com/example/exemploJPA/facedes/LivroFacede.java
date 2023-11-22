@@ -44,7 +44,6 @@ public class LivroFacede {
             request.getAutoresId().forEach((autor) -> insertAutorLivros(autor, livroSalvo.getLivroId()));
             return true;
         } catch (Exception e) {
-
             return false;
         }
 

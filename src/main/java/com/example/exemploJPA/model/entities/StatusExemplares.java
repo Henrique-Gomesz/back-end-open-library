@@ -2,5 +2,7 @@ package com.example.exemploJPA.model.entities;
 
 public enum StatusExemplares {
     ATIVO,
-    INATIVO
+    INATIVO,
+    RESERVADO,
+    EMPRESTADO
 }
