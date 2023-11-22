@@ -1,12 +1,8 @@
 package com.example.exemploJPA.requests;
 
-import java.util.Date;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
-import com.example.exemploJPA.model.entities.Baixa;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class BaixaAnoRequest {
 
@@ -14,7 +10,7 @@ public class BaixaAnoRequest {
 
     @JsonCreator
     public BaixaAnoRequest(
-            @JsonProperty("anoBaixa") Integer anoBaixa) {
+            @RequestParam("anoBaixa") Integer anoBaixa) {
         this.anoBaixa = anoBaixa;
     }
 

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.exemploJPA.facedes.BaixaFacede;
@@ -41,18 +42,15 @@ public class BaixaHttps {
     }
    
     @GetMapping("resgatar-baixa-id")
-    public ResponseEntity<String> resgatarBaixa(@RequestBody BaixaGetRequest baixa )
+    public ResponseEntity<Object> resgatarBaixa(@RequestParam("baixaId") Long baixa)
     {
 
         try{
 
-        Baixa baixaInf = baixaFacede.consultaBaixaId(baixa.toDomain());
+        Baixa baixaInf = baixaFacede.consultaBaixaId(baixa);
         
         if(baixaInf.getBaixaId() != null){
-        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-        String json = ow.writeValueAsString(baixaInf);
-        System.out.println(json);
-        return ResponseEntity.ok(json);
+        return ResponseEntity.ok(baixaInf);
         }
 
         return ResponseEntity.status(404).body("Não foi possível encontrar a baixa, verifique o Id e tente novamente.");
@@ -79,18 +77,15 @@ public class BaixaHttps {
 
 
     @GetMapping("resgatar-baixa-motivo")
-    public ResponseEntity<Object> consultaMotivoBaixa(@RequestBody BaixaMotivoRequest motivo)
+    public ResponseEntity<Object> consultaMotivoBaixa(@RequestParam("motivoBaixa") String motivo)
     {
         
         try{
 
-        List<Baixa> baixaInf = baixaFacede.consultaBaixaMotivo(motivo.toDomain());
+        List<Baixa> baixaInf = baixaFacede.consultaBaixaMotivo(motivo);
         
         if(!baixaInf.isEmpty()){
-        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-        String json = ow.writeValueAsString(baixaInf);
-        System.out.println(json);
-        return ResponseEntity.ok(json);
+        return ResponseEntity.ok(baixaInf);
         }
 
         return ResponseEntity.status(404).body("Não existem baixas com o motivo informado.");
@@ -105,17 +100,14 @@ public class BaixaHttps {
     }
 
     @GetMapping("resgatar-baixa-ano")
-    public ResponseEntity<Object> consultaMotivoBaixa(@RequestBody BaixaAnoRequest ano)
+    public ResponseEntity<Object> consultaAnoBaixa(@RequestParam("anoBaixa") Integer ano)
     {
-        
+        System.out.println(ano);
         try{
-        List<Baixa> baixaInf = baixaFacede.consultaBaixaAno(ano.toDomain());
+        List<Baixa> baixaInf = baixaFacede.consultaBaixaAno(ano);
         
         if(!baixaInf.isEmpty()){
-        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-        String json = ow.writeValueAsString(baixaInf);
-        System.out.println(json);
-        return ResponseEntity.ok(json);
+        return ResponseEntity.ok(baixaInf);
         }
 
         return ResponseEntity.status(404).body("Não existem baixas registradas no ano informado.");

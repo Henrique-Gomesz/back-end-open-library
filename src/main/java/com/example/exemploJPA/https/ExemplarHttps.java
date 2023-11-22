@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.exemploJPA.facedes.ExemplarFacede;
@@ -46,18 +47,15 @@ public class ExemplarHttps {
     }
 
     @GetMapping("resgatar-exemplar-id")
-    public ResponseEntity<String> resgatarExemplar(@RequestBody ExemplarGetDeleteRequest exemp )
+    public ResponseEntity<Object> resgatarExemplar(@RequestParam("exempId") Long exemp)
     {
 
         try{
 
-        Exemplar exempInf = exemplarFacede.consultarExemplar(exemp.toDomain());
+        Exemplar exempInf = exemplarFacede.consultarExemplar(exemp);
         
         if(exempInf.getId() != null){
-        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-        String json = ow.writeValueAsString(exempInf);
-        System.out.println(json);
-        return ResponseEntity.ok(json);
+        return ResponseEntity.ok(exempInf);
         }
 
         return ResponseEntity.status(404).body("Não foi possível encontrar o exemplar, verifique o Id e tente novamente.");
@@ -105,19 +103,16 @@ public class ExemplarHttps {
     }
 
     @GetMapping("resgatar-exemplar-status")
-    public ResponseEntity<Object> consultaStatusExemplar(@RequestBody ExemplarStatusRequest status)
+    public ResponseEntity<Object> consultaStatusExemplar(@RequestParam("status") String status)
     {
         
         try{
 
 
-        List<Exemplar> exempInfo = exemplarFacede.consultaExemplarStatus(status.toDomain());
+        List<Exemplar> exempInfo = exemplarFacede.consultaExemplarStatus(status);
         
         if(!exempInfo.isEmpty()){
-        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-        String json = ow.writeValueAsString(exempInfo);
-        System.out.println(json);
-        return ResponseEntity.ok(json);
+        return ResponseEntity.ok(exempInfo);
         }
 
         return ResponseEntity.status(404).body("Não existem exemplares com o status informado.");
@@ -132,17 +127,14 @@ public class ExemplarHttps {
     }
 
     @GetMapping("resgatar-exemplar-ano")
-    public ResponseEntity<Object> consultaAnoExemplar(@RequestBody ExemplarAnoRequest ano)
+    public ResponseEntity<Object> consultaAnoExemplar(@RequestParam("ano") Integer ano)
     {
         
         try{
-        List<Exemplar> exempInfo = exemplarFacede.consultaExemplarAno(ano.toDomain());
+        List<Exemplar> exempInfo = exemplarFacede.consultaExemplarAno(ano);
         
         if(!exempInfo.isEmpty()){
-        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-        String json = ow.writeValueAsString(exempInfo);
-        System.out.println(json);
-        return ResponseEntity.ok(json);
+        return ResponseEntity.ok(exempInfo);
         }
 
         return ResponseEntity.status(404).body("Não existem exemplares registrados no ano informado.");

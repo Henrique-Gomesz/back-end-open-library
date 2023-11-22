@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.exemploJPA.model.entities.Baixa;
-import com.example.exemploJPA.model.entities.Exemplar;
 import com.example.exemploJPA.model.repositories.BaixaRepository;
 import com.example.exemploJPA.model.repositories.ExemplarRepository;
 
