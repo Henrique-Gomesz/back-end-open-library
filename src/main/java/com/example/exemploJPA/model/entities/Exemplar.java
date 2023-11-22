@@ -1,12 +1,9 @@
 package com.example.exemploJPA.model.entities;
 
-
 import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -27,8 +24,7 @@ public class Exemplar {
     private Long livroId;
 
     @Column(name = "Exemp_status")
-    @Enumerated(EnumType.STRING)
-    private StatusExemplares statusExemplar;
+    private String statusExemplar;
 
     @Column(name = "Exemp_data")
     @Temporal(TemporalType.DATE)
@@ -37,7 +33,7 @@ public class Exemplar {
     @Column(name = "Exemp_edicao")
     private String edicao;
 
-    @Column(name = "Exemp_anoPubli")
+    @Column(name = "Exemp_anopubli")
     private Integer anoPublicacao;
 
     public Long getId() {
@@ -54,14 +50,6 @@ public class Exemplar {
 
     public void setLivroId(Long livroId) {
         this.livroId = livroId;
-    }
-
-    public StatusExemplares getStatusExemplar() {
-        return statusExemplar;
-    }
-
-    public void setStatusExemplar(StatusExemplares statusExemplar) {
-        this.statusExemplar = statusExemplar;
     }
 
     public Date getDataExemplar() {
@@ -88,5 +76,12 @@ public class Exemplar {
         this.anoPublicacao = anoPublicacao;
     }
 
-    
+    public String getStatusExemplar() {
+        return statusExemplar;
+    }
+
+    public void setStatusExemplar(String statusExemplar) {
+        this.statusExemplar = statusExemplar;
+    }
+
 }
