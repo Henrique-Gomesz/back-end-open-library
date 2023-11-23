@@ -12,28 +12,28 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 
 @Entity
-@Table(name = "Exemplar")
+@Table(name = "exemplar")
 public class Exemplar {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Exemp_id")
+    @Column(name = "exemp_id")
     private Long id;
 
-    @Column(name = "Livro_id")
+    @Column(name = "livro_id")
     private Long livroId;
 
-    @Column(name = "Exemp_status")
+    @Column(name = "exemp_status")
     private String statusExemplar;
 
-    @Column(name = "Exemp_data")
+    @Column(name = "exemp_data")
     @Temporal(TemporalType.DATE)
     private Date dataExemplar;
 
-    @Column(name = "Exemp_edicao")
+    @Column(name = "exemp_edicao")
     private String edicao;
 
-    @Column(name = "Exemp_anopubli")
+    @Column(name = "exemp_anopubli")
     private Integer anoPublicacao;
 
     public Long getId() {
@@ -50,6 +50,14 @@ public class Exemplar {
 
     public void setLivroId(Long livroId) {
         this.livroId = livroId;
+    }
+
+    public String getStatusExemplar() {
+        return statusExemplar;
+    }
+
+    public void setStatusExemplar(String statusExemplar) {
+        this.statusExemplar = statusExemplar;
     }
 
     public Date getDataExemplar() {
@@ -76,12 +84,6 @@ public class Exemplar {
         this.anoPublicacao = anoPublicacao;
     }
 
-    public String getStatusExemplar() {
-        return statusExemplar;
-    }
 
-    public void setStatusExemplar(String statusExemplar) {
-        this.statusExemplar = statusExemplar;
-    }
 
 }
