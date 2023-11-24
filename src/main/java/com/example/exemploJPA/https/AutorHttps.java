@@ -13,20 +13,20 @@ import com.example.exemploJPA.requests.AutorRequest;
 @RestController
 @RequestMapping("/autor")
 public class AutorHttps {
-   
+
     @Autowired
     private AutorFacede autorFacede;
 
     @PostMapping()
-    public ResponseEntity<Object> inserirAutor(@RequestBody AutorRequest autor)
-    {
+    public ResponseEntity<Object> inserirAutor(@RequestBody AutorRequest autor) {
         boolean status = autorFacede.inserirAutor(autor.toDomain());
 
-        if(status)
+        if (status)
             return ResponseEntity.ok("Autor inserido com sucesso!");
         else
             return ResponseEntity.status(500).body("Ocorreu um erro ao inserir o autor");
     }
+
    
 
 }

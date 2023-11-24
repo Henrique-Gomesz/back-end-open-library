@@ -1,6 +1,5 @@
 package com.example.exemploJPA.model.entities;
 
-
 import java.util.Date;
 
 import jakarta.persistence.Column;
@@ -85,5 +84,6 @@ public class Exemplar {
         this.anoPublicacao = anoPublicacao;
     }
 
-    
+
+
 }
